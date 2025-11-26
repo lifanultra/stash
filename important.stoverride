@@ -1,0 +1,33 @@
+# 第一部分 QUIC 屏蔽 | 第二部分 Mitim 白名单
+name: QUIC 屏蔽
+desc: |-
+    - 2025年11月26日更新
+    - 需要将优先级调整到最高
+    - 添加白名单禁止对部分域名 mitm
+category: LIFANULTRA
+icon: https://vip.123pan.cn/1816125706/yk6baz03t0l000d7w33fsq9f7vl4iatkDIYPAqevAIUOApxPDwYvAF==.webp
+rules:
+    - PROTOCOL,QUIC,REJECT,no-track
+    - AND,((NETWORK,UDP),(DST-PORT,443)),REJECT,no-track
+http:
+    mitm:
+        # ChatGPT App
+        - "-ios.chat.openai.com"
+        - "-ws.chatgpt.com"
+        - "-ab.chatgpt.com"
+        # Apple
+        - "-*.itunes.apple.com"
+        - "-*.iadsdk.apple.com"
+        - "-*.apple.com"
+        - "-*.mzstatic.com"
+        - "-*.icloud-content.com"
+        - "-*.icloud.com"
+        - "-gspe1-ssl.ls.apple.com"
+        # 抖音
+        - "-*.douyinvod.com"
+        - "-*.douyinpic.com"
+        - "-*.amemv.com"
+        # 腾讯
+        - "-qq.com"
+        - "-weixin.com"
+        - "-wechat.com"
